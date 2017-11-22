@@ -1,17 +1,22 @@
 'use strict';
-const express = require('express');
-const todoGet = require('./todoGet')
 
+const express = require('express');
+const TodoFileDB = require('./todoFileDB');
+const todosGet = require('./todosGet');
+const todosPost = require('./todosPost');
+const bodyParser = require('body-parser');
 main();
 
 function main() {
   const app = express();
+  const db = new TodoFileDB('db.json');
 
-  app.get('/todos', function (req, res) {
-    todoGet().then( (resp) => {
-      res.send(resp);
-    });
-  })
+  app.use(bodyParser.json())
+
+  app.get('/todos', todosGet(db));
+  app.post('/todos', todosPost(db));
 
   app.listen(3000)
 }
+
+
