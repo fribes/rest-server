@@ -1,0 +1,23 @@
+{
+  "name": "rest-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "jest": "jest",
+    "lint": "eslint .",
+    "test": "npm run jest; code=$?; npm run lint; exit $((${code}+$?))",
+    "testw": "jest . --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.16.2"
+  },
+  "devDependencies": {
+    "eslint": "4.11.0",
+    "eslint-plugin-jest": "21.3.2",
+    "jest": "21.2.1",
+    "prettier": "1.8.2"
+  }
+}
